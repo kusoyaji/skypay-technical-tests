@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Reservation System - Test Interface</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            padding: 30px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .tab {
+            padding: 15px 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1em;
+            color: #666;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab:hover {
+            color: #667eea;
+        }
+
+        .tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .form-section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
+
+        .alert {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            animation: slideIn 0.3s;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .data-section {
+            margin-top: 30px;
+        }
+
+        .data-section h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .data-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .data-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+
+        .data-card:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .data-card h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .data-card p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .data-card strong {
+            color: #333;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+            font-size: 1.1em;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .badge-standard {
+            background: #cce5ff;
+            color: #004085;
+        }
+
+        .badge-junior {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .badge-master {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        #loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏨 Hotel Reservation System</h1>
+            <p>Skypay Technical Test 2 - Interactive Test Interface</p>
+        </div>
+
+        <div class="main-content">
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('rooms')">🛏️ Rooms</button>
+                <button class="tab" onclick="showTab('users')">👤 Users</button>
+                <button class="tab" onclick="showTab('bookings')">📅 Bookings</button>
+                <button class="tab" onclick="showTab('view')">📊 View All</button>
+            </div>
+
+            <div id="message-area"></div>
+            <div id="loading"><div class="spinner"></div></div>
+
+            <!-- Rooms Tab -->
+            <div id="rooms-tab" class="tab-content active">
+                <div class="form-section">
+                    <h2>Create/Update Room</h2>
+                    <form onsubmit="createRoom(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="roomNumber">Room Number</label>
+                                <input type="number" id="roomNumber" required min="1">
+                            </div>
+                            <div class="form-group">
+                                <label for="roomType">Room Type</label>
+                                <select id="roomType" required>
+                                    <option value="STANDARD">Standard Suite</option>
+                                    <option value="JUNIOR">Junior Suite</option>
+                                    <option value="MASTER">Master Suite</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="pricePerNight">Price Per Night</label>
+                                <input type="number" id="pricePerNight" required min="1">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Create/Update Room</button>
+                    </form>
+                </div>
+
+                <div class="data-section">
+                    <h3>All Rooms (Latest to Oldest)</h3>
+                    <div id="rooms-list" class="data-grid"></div>
+                </div>
+            </div>
+
+            <!-- Users Tab -->
+            <div id="users-tab" class="tab-content">
+                <div class="form-section">
+                    <h2>Create/Update User</h2>
+                    <form onsubmit="createUser(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="userId">User ID</label>
+                                <input type="number" id="userId" required min="1">
+                            </div>
+                            <div class="form-group">
+                                <label for="balance">Balance</label>
+                                <input type="number" id="balance" required min="0">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Create/Update User</button>
+                    </form>
+                </div>
+
+                <div class="data-section">
+                    <h3>All Users (Latest to Oldest)</h3>
+                    <div id="users-list" class="data-grid"></div>
+                </div>
+            </div>
+
+            <!-- Bookings Tab -->
+            <div id="bookings-tab" class="tab-content">
+                <div class="form-section">
+                    <h2>Book a Room</h2>
+                    <form onsubmit="bookRoom(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="bookUserId">User ID</label>
+                                <input type="number" id="bookUserId" required min="1">
+                            </div>
+                            <div class="form-group">
+                                <label for="bookRoomNumber">Room Number</label>
+                                <input type="number" id="bookRoomNumber" required min="1">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="checkIn">Check-In Date</label>
+                                <input type="date" id="checkIn" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="checkOut">Check-Out Date</label>
+                                <input type="date" id="checkOut" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Book Room</button>
+                    </form>
+                </div>
+
+                <div class="data-section">
+                    <h3>All Bookings (Latest to Oldest)</h3>
+                    <div id="bookings-list" class="data-grid"></div>
+                </div>
+            </div>
+
+            <!-- View All Tab -->
+            <div id="view-tab" class="tab-content">
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <button class="btn btn-success" onclick="loadAllData()">🔄 Refresh All Data</button>
+                    <button class="btn btn-danger" onclick="clearAllData()">🗑️ Clear All Data</button>
+                </div>
+
+                <div class="data-section">
+                    <h3>All Rooms</h3>
+                    <div id="view-rooms-list" class="data-grid"></div>
+                </div>
+
+                <div class="data-section">
+                    <h3>All Users</h3>
+                    <div id="view-users-list" class="data-grid"></div>
+                </div>
+
+                <div class="data-section">
+                    <h3>All Bookings</h3>
+                    <div id="view-bookings-list" class="data-grid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = '/api';
+
+        function showTab(tabName) {
+            // Update tab buttons
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Update tab content
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.getElementById(tabName + '-tab').classList.add('active');
+
+            // Load data for the tab
+            if (tabName === 'rooms') loadRooms();
+            if (tabName === 'users') loadUsers();
+            if (tabName === 'bookings') loadBookings();
+            if (tabName === 'view') loadAllData();
+        }
+
+        function showMessage(message, isError = false) {
+            const messageArea = document.getElementById('message-area');
+            const alertClass = isError ? 'alert-error' : 'alert-success';
+            messageArea.innerHTML = `<div class="alert ${alertClass}">${message}</div>`;
+            setTimeout(() => messageArea.innerHTML = '', 5000);
+        }
+
+        function showLoading(show) {
+            document.getElementById('loading').style.display = show ? 'block' : 'none';
+        }
+
+        async function createRoom(event) {
+            event.preventDefault();
+            showLoading(true);
+
+            const data = {
+                roomNumber: parseInt(document.getElementById('roomNumber').value),
+                roomType: document.getElementById('roomType').value,
+                pricePerNight: parseInt(document.getElementById('pricePerNight').value)
+            };
+
+            try {
+                const response = await fetch(`${API_BASE}/rooms`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    showMessage(result.message);
+                    event.target.reset();
+                    loadRooms();
+                } else {
+                    showMessage(result.error, true);
+                }
+            } catch (error) {
+                showMessage('Error: ' + error.message, true);
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        async function createUser(event) {
+            event.preventDefault();
+            showLoading(true);
+
+            const data = {
+                userId: parseInt(document.getElementById('userId').value),
+                balance: parseInt(document.getElementById('balance').value)
+            };
+
+            try {
+                const response = await fetch(`${API_BASE}/users`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    showMessage(result.message);
+                    event.target.reset();
+                    loadUsers();
+                } else {
+                    showMessage(result.error, true);
+                }
+            } catch (error) {
+                showMessage('Error: ' + error.message, true);
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        async function bookRoom(event) {
+            event.preventDefault();
+            showLoading(true);
+
+            const data = {
+                userId: parseInt(document.getElementById('bookUserId').value),
+                roomNumber: parseInt(document.getElementById('bookRoomNumber').value),
+                checkIn: document.getElementById('checkIn').value,
+                checkOut: document.getElementById('checkOut').value
+            };
+
+            try {
+                const response = await fetch(`${API_BASE}/bookings`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    showMessage(result.message);
+                    event.target.reset();
+                    loadBookings();
+                    loadUsers(); // Refresh users to show updated balance
+                } else {
+                    showMessage(result.error, true);
+                }
+            } catch (error) {
+                showMessage('Error: ' + error.message, true);
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        async function loadRooms() {
+            showLoading(true);
+            try {
+                const response = await fetch(`${API_BASE}/rooms`);
+                const rooms = await response.json();
+                
+                const roomsList = document.getElementById('rooms-list');
+                if (rooms.length === 0) {
+                    roomsList.innerHTML = '<div class="empty-state">No rooms created yet</div>';
+                } else {
+                    roomsList.innerHTML = rooms.map(room => `
+                        <div class="data-card">
+                            <h4>Room ${room.roomNumber}</h4>
+                            <p><strong>Type:</strong> <span class="badge badge-${room.roomType.toLowerCase()}">${room.roomTypeDisplay}</span></p>
+                            <p><strong>Price/Night:</strong> ${room.pricePerNight}</p>
+                            <p><strong>Created:</strong> ${new Date(room.createdAt).toLocaleString()}</p>
+                        </div>
+                    `).join('');
+                }
+            } catch (error) {
+                showMessage('Error loading rooms: ' + error.message, true);
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        async function loadUsers() {
+            showLoading(true);
+            try {
+                const response = await fetch(`${API_BASE}/users`);
+                const users = await response.json();
+                
+                const usersList = document.getElementById('users-list');
+                if (users.length === 0) {
+                    usersList.innerHTML = '<div class="empty-state">No users created yet</div>';
+                } else {
+                    usersList.innerHTML = users.map(user => `
+                        <div class="data-card">
+                            <h4>User ${user.userId}</h4>
+                            <p><strong>Balance:</strong> ${user.balance}</p>
+                            <p><strong>Created:</strong> ${new Date(user.createdAt).toLocaleString()}</p>
+                        </div>
+                    `).join('');
+                }
+            } catch (error) {
+                showMessage('Error loading users: ' + error.message, true);
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        async function loadBookings() {
+            showLoading(true);
+            try {
+                const response = await fetch(`${API_BASE}/bookings`);
+                const bookings = await response.json();
+                
+                const bookingsList = document.getElementById('bookings-list');
+                if (bookings.length === 0) {
+                    bookingsList.innerHTML = '<div class="empty-state">No bookings yet</div>';
+                } else {
+                    bookingsList.innerHTML = bookings.map(booking => `
+                        <div class="data-card">
+                            <h4>Booking #${booking.bookingId}</h4>
+                            <p><strong>User ID:</strong> ${booking.userId} (Balance at booking: ${booking.userBalanceAtBooking})</p>
+                            <p><strong>Room:</strong> ${booking.roomNumber} - <span class="badge badge-${booking.roomTypeAtBooking.toLowerCase()}">${booking.roomTypeAtBookingDisplay}</span></p>
+                            <p><strong>Price/Night at Booking:</strong> ${booking.roomPricePerNightAtBooking}</p>
+                            <p><strong>Period:</strong> ${booking.checkIn} to ${booking.checkOut}</p>
+                            <p><strong>Nights:</strong> ${booking.numberOfNights}</p>
+                            <p><strong>Total Price:</strong> ${booking.totalPrice}</p>
+                            <p><strong>Booked:</strong> ${new Date(booking.createdAt).toLocaleString()}</p>
+                        </div>
+                    `).join('');
+                }
+            } catch (error) {
+                showMessage('Error loading bookings: ' + error.message, true);
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        async function loadAllData() {
+            showLoading(true);
+            try {
+                const response = await fetch(`${API_BASE}/all`);
+                const data = await response.json();
+                
+                // Rooms
+                const viewRoomsList = document.getElementById('view-rooms-list');
+                if (data.rooms.length === 0) {
+                    viewRoomsList.innerHTML = '<div class="empty-state">No rooms</div>';
+                } else {
+                    viewRoomsList.innerHTML = data.rooms.map(room => `
+                        <div class="data-card">
+                            <h4>Room ${room.roomNumber}</h4>
+                            <p><strong>Type:</strong> <span class="badge badge-${room.roomType.toLowerCase()}">${room.roomTypeDisplay}</span></p>
+                            <p><strong>Price/Night:</strong> ${room.pricePerNight}</p>
+                        </div>
+                    `).join('');
+                }
+
+                // Users
+                const viewUsersList = document.getElementById('view-users-list');
+                if (data.users.length === 0) {
+                    viewUsersList.innerHTML = '<div class="empty-state">No users</div>';
+                } else {
+                    viewUsersList.innerHTML = data.users.map(user => `
+                        <div class="data-card">
+                            <h4>User ${user.userId}</h4>
+                            <p><strong>Balance:</strong> ${user.balance}</p>
+                        </div>
+                    `).join('');
+                }
+
+                // Bookings
+                const viewBookingsList = document.getElementById('view-bookings-list');
+                if (data.bookings.length === 0) {
+                    viewBookingsList.innerHTML = '<div class="empty-state">No bookings</div>';
+                } else {
+                    viewBookingsList.innerHTML = data.bookings.map(booking => `
+                        <div class="data-card">
+                            <h4>Booking #${booking.bookingId}</h4>
+                            <p><strong>User:</strong> ${booking.userId} (Balance: ${booking.userBalanceAtBooking})</p>
+                            <p><strong>Room:</strong> ${booking.roomNumber} - ${booking.roomTypeAtBookingDisplay} (${booking.roomPricePerNightAtBooking}/night)</p>
+                            <p><strong>Period:</strong> ${booking.checkIn} to ${booking.checkOut} (${booking.numberOfNights} nights)</p>
+                            <p><strong>Total:</strong> ${booking.totalPrice}</p>
+                        </div>
+                    `).join('');
+                }
+
+                showMessage('Data refreshed successfully');
+            } catch (error) {
+                showMessage('Error loading data: ' + error.message, true);
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        async function clearAllData() {
+            if (!confirm('Are you sure you want to clear all data? This cannot be undone.')) {
+                return;
+            }
+
+            showLoading(true);
+            try {
+                const response = await fetch(`${API_BASE}/clear`, { method: 'DELETE' });
+                const result = await response.json();
+                
+                if (response.ok) {
+                    showMessage(result.message);
+                    loadAllData();
+                } else {
+                    showMessage(result.error, true);
+                }
+            } catch (error) {
+                showMessage('Error: ' + error.message, true);
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        // Load initial data
+        loadRooms();
+    </script>
+</body>
+</html>

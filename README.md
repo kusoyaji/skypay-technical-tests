@@ -16,6 +16,9 @@ This repository contains the complete implementation of **both technical tests**
 
 Each test has been implemented in **two versions**: a pure Java version and a Spring Boot version, demonstrating versatility and comprehensive understanding of both approaches.
 
+The answers to **Skypay Technical Test 2 - Hotel Reservation System's** Design Questions (Bonus), is in the folder **test2-hotel-java** inside the file **DesignQuestions-Answers.md**
+
+
 **Total Projects:** 4  
 **Test 1:** Banking Service System (Java + Spring Boot)  
 **Test 2:** Hotel Reservation System (Java + Spring Boot)  

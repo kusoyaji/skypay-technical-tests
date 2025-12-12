@@ -58,7 +58,7 @@ A complete banking system implementation that manages customer accounts, deposit
   ```
 
 #### 🌱 test1-banking-spring (Spring Boot)
-- **Technology:** Java 17+, Spring Boot 3.x, Maven, JUnit 5
+- **Technology:** Java 17+, Spring Boot 4, Maven, JUnit 5
 - **Architecture:** Spring MVC with REST API
 - **Features:**
   - Everything from Java version
@@ -100,7 +100,7 @@ A sophisticated hotel reservation system managing rooms, users, bookings with im
   ```
 
 #### 🌱 test2-hotel-spring (Spring Boot)
-- **Technology:** Java 17+, Spring Boot 3.x, Maven, JUnit 5
+- **Technology:** Java 17+, Spring Boot 4, Maven, JUnit 5
 - **Architecture:** Spring MVC with REST API and service layer
 - **Features:**
   - Everything from Java version
@@ -174,7 +174,7 @@ mvn clean test              # Run tests
 mvn exec:java              # Run application
 ```
 
-**Spring Boot Version:**
+**Spring Boot 4 Version:**
 ```bash
 cd test1-banking-spring
 mvnw spring-boot:run       # Run application
@@ -190,7 +190,7 @@ mvn clean test              # Run tests
 mvn exec:java              # Run application
 ```
 
-**Spring Boot Version:**
+**Spring Boot 4 Version:**
 ```bash
 cd test2-hotel-spring
 mvnw spring-boot:run       # Run application
@@ -337,7 +337,7 @@ Beyond the basic requirements, these implementations include:
 
 This repository demonstrates:
 
-1. **Technical Proficiency** - Clean, professional code in both Java and Spring Boot
+1. **Technical Proficiency** - Clean, professional code in both Java and Spring Boot 4
 2. **Problem-Solving** - Optimal solutions to complex business requirements
 3. **Testing Excellence** - Comprehensive test coverage with edge cases
 4. **Documentation Quality** - Clear, thorough documentation

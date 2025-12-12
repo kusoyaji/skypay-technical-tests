@@ -1,11 +1,12 @@
 # Skypay Technical Tests - Complete Implementation
 
-**Candidate:** Mehdi  
-**Submission Date:** December 2025  
-**Company:** Skypay  
-**Contact:** recrutement@skypay.ma
+For any questions regarding this submission:
 
----
+  
+**Candidate Email:** Meehdi99@gmail.com  
+**Candidate Name & lastname:** Mehdi Boudar
+**Candidate Phone:** 0610059159
+
 
 ## 📋 Overview
 
@@ -202,7 +203,7 @@ mvnw spring-boot:run       # Run application
 |-----------|------------|
 | **Language** | Java 17+ |
 | **Build Tool** | Maven |
-| **Framework** | Spring Boot 3.x (for Spring projects) |
+| **Framework** | Spring Boot 4 (for Spring projects) |
 | **Testing** | JUnit 5, Spring Test |
 | **Web** | Spring Web, HTML5, CSS3, JavaScript |
 | **Data Storage** | In-memory (ArrayList) |
@@ -353,11 +354,6 @@ This repository demonstrates:
 
 ## 📧 Contact
 
-For any questions regarding this submission:
-
-**Company:** Skypay  
-**Email:** recrutement@skypay.ma  
-**Candidate:** Mehdi
 
 ---
 

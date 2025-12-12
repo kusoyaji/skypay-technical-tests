@@ -3,9 +3,11 @@
 For any questions regarding this submission:
 
   
-**Candidate Email:** Meehdi99@gmail.com  
-**Candidate Name & lastname:** Mehdi Boudar
-**Candidate Phone:** 0610059159
+**Email:** Meehdi99@gmail.com 
+
+**Name & lastname:** Mehdi Boudar
+
+**Phone:** 0610059159
 
 
 ## 📋 Overview

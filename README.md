@@ -12,7 +12,9 @@ For any questions regarding this submission:
 
 ## 📋 Overview
 
-This repository contains the complete implementation of **both technical tests** provided by Skypay as part of the recruitment process. Each test has been implemented in **two versions**: a pure Java version and a Spring Boot version, demonstrating versatility and comprehensive understanding of both approaches.
+This repository contains the complete implementation of **both technical tests** provided by Skypay as part of the recruitment process. 
+
+Each test has been implemented in **two versions**: a pure Java version and a Spring Boot version, demonstrating versatility and comprehensive understanding of both approaches.
 
 **Total Projects:** 4  
 **Test 1:** Banking Service System (Java + Spring Boot)  
